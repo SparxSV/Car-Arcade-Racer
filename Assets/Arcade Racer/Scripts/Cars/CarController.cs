@@ -4,6 +4,9 @@ using NaughtyAttributes;
 
 using System;
 using System.Collections.Generic;
+
+using UnityEditor.ShaderGraph.Drawing;
+
 using UnityEngine;
 
 public class CarController : MonoBehaviour
@@ -32,8 +35,9 @@ public class CarController : MonoBehaviour
     [DisableIf(EConditionOperator.Or, "rearWheelDrive", "allWheelDrive")] public bool frontWheelDrive;
     [DisableIf(EConditionOperator.Or, "rearWheelDrive", "frontWheelDrive")] public bool allWheelDrive;
 
-    [Header("Speed")]
-    public float acceleration = 30.0f;
+    [Header("Speed")] 
+    public float topSpeed = 300f;
+    public float acceleration = 30f;
     [ReadOnly] public float currentSpeed;
     [ReadOnly] public float currentRpm;
 
@@ -94,8 +98,35 @@ public class CarController : MonoBehaviour
 
     private void Move()
     {
-        foreach(Wheel wheel in wheels)
-            wheel.wheelCollider.motorTorque = moveInput * 600 * acceleration * Time.deltaTime;
+        if(rearWheelDrive)
+        {
+            foreach(Wheel wheel in wheels)
+            {
+                if(wheel.axel == Axel.Rear)
+                    wheel.wheelCollider.motorTorque = moveInput * acceleration * topSpeed * Time.deltaTime;
+
+                if(wheel.axel == Axel.Front)
+                    wheel.wheelCollider.motorTorque = 0;
+            }
+        }
+
+        if(frontWheelDrive)
+        {
+            foreach(Wheel wheel in wheels)
+            {
+                if(wheel.axel == Axel.Front)
+                    wheel.wheelCollider.motorTorque = moveInput * acceleration * topSpeed * Time.deltaTime;
+
+                if(wheel.axel == Axel.Rear)
+                    wheel.wheelCollider.motorTorque = 0;
+            }
+        }
+
+        if(allWheelDrive)
+        {
+            foreach(Wheel wheel in wheels)
+                wheel.wheelCollider.motorTorque = moveInput * acceleration * topSpeed * Time.deltaTime;
+        }
     }
 
     private void Steer()

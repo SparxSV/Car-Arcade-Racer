@@ -503,14 +503,15 @@ MonoBehaviour:
   rearWheelDrive: 0
   frontWheelDrive: 0
   allWheelDrive: 1
+  topSpeed: 300
   acceleration: 1000
   currentSpeed: 0
   currentRpm: 0
   brakeForce: 100
   frontBrakeForce: 300
   rearBrakeForce: 200
-  turningSensitivity: 1
-  maxSteeringAngle: 30
+  turningSensitivity: 0.5
+  maxSteeringAngle: 50
   frontWheelSteering: 1
   rearWheelSteering: 0
   allWheelSteering: 0
