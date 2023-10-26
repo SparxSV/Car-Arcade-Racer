@@ -48,10 +48,11 @@ public class CarController : MonoBehaviour
     
     [Header("Steering")]
     public float turningSensitivity = 1.0f;
-    public float maxSteeringAngle = 30.0f;
     [DisableIf(EConditionOperator.Or, "rearWheelSteering", "allWheelSteering")] public bool frontWheelSteering;
     [DisableIf(EConditionOperator.Or, "frontWheelSteering", "allWheelSteering")] public bool rearWheelSteering;
     [DisableIf(EConditionOperator.Or, "rearWheelSteering", "frontWheelSteering")] public bool allWheelSteering;
+    [EnableIf(EConditionOperator.Or, "frontWheelSteering", "allWheelSteering"), Range(-10f, 150f)] public float frontSteerAngle = 40f;
+    [EnableIf(EConditionOperator.Or, "rearWheelSteering", "allWheelSteering"), Range(-10f, 150f)] public float rearSteerAngle = 30f;
     
     [Header("Center of Mass")]
     public Vector3 centerOfMass;
@@ -80,7 +81,7 @@ public class CarController : MonoBehaviour
     {
         GetInputs();
         AnimateWheels();
-        WheelEffects();
+        //WheelEffects();
     }
 
     private void LateUpdate()
@@ -88,6 +89,8 @@ public class CarController : MonoBehaviour
         Move();
         Steer();
         Brake();
+
+        currentSpeed = carRigidBody.velocity.magnitude * 3.6f;
     }
     
     private void GetInputs()
@@ -137,7 +140,7 @@ public class CarController : MonoBehaviour
             {
                 if(wheel.axel == Axel.Front)
                 {
-                    float steerAngle = steerInput * turningSensitivity * maxSteeringAngle;
+                    float steerAngle = steerInput * turningSensitivity * frontSteerAngle;
                     wheel.wheelCollider.steerAngle = Mathf.Lerp(wheel.wheelCollider.steerAngle, steerAngle, 0.6f);
                 }
             }
@@ -149,7 +152,25 @@ public class CarController : MonoBehaviour
             {
                 if(wheel.axel == Axel.Rear)
                 {
-                    float steerAngle = steerInput * turningSensitivity * maxSteeringAngle;
+                    float steerAngle = steerInput * turningSensitivity * rearSteerAngle;
+                    wheel.wheelCollider.steerAngle = Mathf.Lerp(wheel.wheelCollider.steerAngle, -steerAngle, 0.6f);
+                }
+            }
+        }
+
+        if(allWheelSteering)
+        {
+            foreach(Wheel wheel in wheels)
+            {
+                if(wheel.axel == Axel.Front)
+                {
+                    float steerAngle = steerInput * turningSensitivity * frontSteerAngle;
+                    wheel.wheelCollider.steerAngle = Mathf.Lerp(wheel.wheelCollider.steerAngle, steerAngle, 0.6f);
+                }
+                
+                if(wheel.axel == Axel.Rear)
+                {
+                    float steerAngle = steerInput * turningSensitivity * rearSteerAngle;
                     wheel.wheelCollider.steerAngle = Mathf.Lerp(wheel.wheelCollider.steerAngle, -steerAngle, 0.6f);
                 }
             }

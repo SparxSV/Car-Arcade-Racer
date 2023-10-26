@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,60 +123,32 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &352014384
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 352014385}
-  m_Layer: 0
-  m_Name: Testing Ground
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &352014385
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 352014384}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1085340764}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &541446951
+--- !u!1001 &209460427
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2317697587437980272, guid: 0f7bf12891fa3d74a8e20e46163da08f, type: 3}
+      propertyPath: rearSteerAngle
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 3714403563517813716, guid: 0f7bf12891fa3d74a8e20e46163da08f, type: 3}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3714403563517813716, guid: 0f7bf12891fa3d74a8e20e46163da08f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.172157
+      value: -17.33818
       objectReference: {fileID: 0}
     - target: {fileID: 3714403563517813716, guid: 0f7bf12891fa3d74a8e20e46163da08f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.000099658966
+      value: 0.0011523366
       objectReference: {fileID: 0}
     - target: {fileID: 3714403563517813716, guid: 0f7bf12891fa3d74a8e20e46163da08f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 40.90523
+      value: 39.766968
       objectReference: {fileID: 0}
     - target: {fileID: 3714403563517813716, guid: 0f7bf12891fa3d74a8e20e46163da08f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -212,6 +184,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f7bf12891fa3d74a8e20e46163da08f, type: 3}
+--- !u!1 &352014384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 352014385}
+  m_Layer: 0
+  m_Name: Testing Ground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &352014385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352014384}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1085340764}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +411,7 @@ MonoBehaviour:
   rotSmoothness: 10
   moveOffset: {x: 0, y: 2, z: -6}
   rotOffset: {x: 0, y: 0, z: 0}
-  carTarget: {fileID: 0}
+  carTarget: {fileID: 2104957698}
 --- !u!1 &1085340763
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,3 +510,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1085340763}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &2104957698 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3714403563517813716, guid: 0f7bf12891fa3d74a8e20e46163da08f, type: 3}
+  m_PrefabInstance: {fileID: 209460427}
+  m_PrefabAsset: {fileID: 0}

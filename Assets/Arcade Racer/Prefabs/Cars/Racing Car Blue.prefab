@@ -511,10 +511,11 @@ MonoBehaviour:
   frontBrakeForce: 300
   rearBrakeForce: 200
   turningSensitivity: 0.5
-  maxSteeringAngle: 50
-  frontWheelSteering: 1
-  rearWheelSteering: 0
+  frontWheelSteering: 0
+  rearWheelSteering: 1
   allWheelSteering: 0
+  frontSteerAngle: 40
+  rearSteerAngle: 30
   centerOfMass: {x: 0, y: 0, z: 0}
   wheels:
   - wheelModel: {fileID: 5199932630375030300}
